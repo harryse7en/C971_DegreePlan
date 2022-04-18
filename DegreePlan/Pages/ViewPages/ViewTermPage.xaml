@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DegreePlan.ViewTerm">
+
+    <!-- EDIT TERM TOOLBAR BUTTON -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="xBtnEdit_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <!-- TITLE OF PAGE -->
+                <Label Text="Term Details" TextColor="Navy"
+                       FontAttributes="Bold" FontSize="Title"
+                       Margin="0" HorizontalOptions="Center"
+                       x:Name="xPageTitle"/>
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+
+                    <!-- TERM START DATE -->
+                    <Label Text="Start:" TextColor="Navy"
+                           FontAttributes="Bold" FontSize="Subtitle"
+                           VerticalOptions="Center"/>
+                    <Label Text="1/1/1970" FontSize="Subtitle"
+                           TextColor="Navy" VerticalOptions="Center"
+                           x:Name="xTermStartDate"/>
+
+                    <!-- TERM END DATE -->
+                    <Label Text= "End:" TextColor="Navy"
+                           FontAttributes="Bold" FontSize="Subtitle"
+                           VerticalOptions="Center" Margin="20,0,0,0"/>
+                    <Label Text="1/31/1970" FontSize="Subtitle"
+                           TextColor="Navy" VerticalOptions="Center"
+                           x:Name="xTermEndDate"/>
+                </StackLayout>
+                <BoxView Color="Navy" HeightRequest="2"/>
+
+                <!-- LISTVIEW TO DISPLAY ALL COURSES -->
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <ListView x:Name="xCourseList" Margin="5,0,5,0"
+                              HeightRequest="1" HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Height="65">
+                                    <StackLayout>
+
+                                        <!-- COURSE NAME -->
+                                        <Label Text="{Binding Name}" TextColor="Black"
+                                           FontAttributes="Bold" FontSize= "Medium"
+                                           VerticalOptions="Center"/>
+                                        <StackLayout HorizontalOptions="Start" Orientation="Horizontal"
+                                                 Margin="20,0,0,0">
+
+                                            <!-- START DATE -->
+                                            <Label Text= "Start:" TextColor="Black"
+                                                   FontAttributes="Bold" FontSize="Small"
+                                                   VerticalOptions="Center"/>
+                                            <Label Text="{Binding StartDate,StringFormat='{}{0:MM/dd/yy}'}"
+                                                   TextColor="Black" FontSize="Small"
+                                                   VerticalOptions="Center"/>
+
+                                            <!-- END DATE -->
+                                            <Label Text= "End:" TextColor="Black"
+                                                   FontAttributes="Bold" FontSize="Small"
+                                                   VerticalOptions="Center"/>
+                                            <Label Text="{Binding EndDate,StringFormat='{}{0:MM/dd/yy}'}"
+                                                   TextColor="Black" FontSize="Small"
+                                                   VerticalOptions="Center"/>
+
+                                            <!-- COURSE STATUS -->
+                                            <Label Text="{Binding Status}" FontAttributes="Bold,Italic"
+                                                   TextColor="Navy" FontSize="Small"
+                                                   VerticalOptions="Center" Margin="20,0,0,0"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                
+                <!-- ADD COURSE BUTTON -->
+                <Button Text="Add Course" x:Name="xBtnAdd"
+                        BackgroundColor="Navy" HeightRequest="50"
+                        TextColor="White" Clicked="xBtnAdd_Clicked"
+                        Grid.Row="0" Grid.Column="1"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+    

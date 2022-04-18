@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DegreePlan.ModTerm">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="0">
+
+                <!-- TITLE OF PAGE -->
+                <Label Text="Edit Term" FontSize="Title"
+                       HorizontalOptions="Center" TextColor="Navy"/>
+                <BoxView Color="Navy" HeightRequest="2"/>
+                <Entry Placeholder="Term Name" Margin="5" x:Name="xName"
+                       TextChanged="xName_Changed"/>
+
+                <!-- GRID FOR DATE SELECTIONS -->
+                <Grid ColumnSpacing="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- TERM START DATE -->
+                    <Label Text="Start Date:" TextColor="Navy"
+						   HorizontalOptions="End" VerticalOptions="Center"
+                           Grid.Row="0" Grid.Column="0"/>
+                    <DatePicker Format="D" x:Name="xStartDate"
+                                DateSelected="xStartDate_DateSelected"
+                                Grid.Row="0" Grid.Column="1"/>
+
+                    <!-- TERM END DATE -->
+                    <Label Text="End Date:" TextColor="Navy"
+						   HorizontalOptions="End" VerticalOptions="Center"
+                           Grid.Row="1" Grid.Column="0"/>
+                    <DatePicker Format="D" x:Name="xEndDate"
+                                Grid.Row="1" Grid.Column="1"
+                                DateSelected="xEndDate_DateSelected"/>
+                </Grid>
+
+                <!-- GRID FOR BUTTONS -->
+                <Grid ColumnSpacing="2" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- DELETE BUTTON -->
+                    <Button Text="Delete Term" x:Name="xBtnDelete"
+                            BackgroundColor="Red" HeightRequest="50"
+                            TextColor="White" Clicked="xBtnDelete_Clicked"
+                            Grid.Row="0" Grid.Column="0"/>
+
+                    <!-- SAVE BUTTON -->
+                    <Button Text="Save Changes" x:Name="xBtnSave"
+                            BackgroundColor="Navy" HeightRequest="50"
+                            TextColor="White" Clicked="xBtnSave_Clicked"
+                            Grid.Row="0" Grid.Column="1"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+
+
+    </ContentPage.Content>
+
+</ContentPage>

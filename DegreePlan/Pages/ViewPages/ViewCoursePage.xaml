@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DegreePlan.ViewCourse">
+
+    <!-- EDIT COURSE TOOLBAR BUTTON -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="xBtnEdit_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <!-- TITLE OF PAGE -->
+                <Label Text="Course Details" TextColor="Navy"
+                       FontAttributes="Bold" FontSize="Title"
+                       Margin="0" HorizontalOptions="Center"
+                       x:Name="xPageTitle"/>
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+
+                    <!-- COURSE START DATE -->
+                    <Label Text="Start:" TextColor="Navy"
+                           FontAttributes="Bold" FontSize="Subtitle"
+                           VerticalOptions="Center"/>
+                    <Label Text="1/1/1970" FontSize="Subtitle"
+                           TextColor="Navy" VerticalOptions="Center"
+                           x:Name="xCourseStartDate"/>
+
+                    <!-- COURSE END DATE -->
+                    <Label Text= "End:" TextColor="Navy"
+                           FontAttributes="Bold" FontSize="Subtitle"
+                           VerticalOptions="Center" Margin="20,0,0,0"/>
+                    <Label Text="1/31/1970" FontSize="Subtitle"
+                           TextColor="Navy" VerticalOptions="Center"
+                           x:Name="xCourseEndDate"/>
+                </StackLayout>
+                <BoxView Color="Navy" HeightRequest="0.5"/>
+                <StackLayout>
+
+                    <!-- GRID FOR ALL CONTENT WITH TWO COLUMNS -->
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- COURSE STATUS -->
+                        <Label Text="Status:" TextColor="Navy"
+                               HorizontalOptions="End" VerticalOptions="Center"
+                               Grid.Row="0" Grid.Column="0"/>
+                        <Label x:Name="xStatus" TextColor="Black"
+                               HorizontalOptions="Start" VerticalOptions="Center"
+                               Grid.Row="0" Grid.Column="1"
+                               Text="Registered"/>
+
+                        <!-- INSTRUCTOR NAME -->
+                        <Label Text="Instructor Name:" TextColor="Navy"
+                               HorizontalOptions="End" VerticalOptions="Center"
+                               Grid.Row="1" Grid.Column="0"/>
+                        <Label x:Name="xInstName" TextColor="Black"
+                               HorizontalOptions="Start" VerticalOptions="Center"
+                               Grid.Row="1" Grid.Column="1"
+                               Text="Example Name"/>
+
+                        <!-- INSTRUCTOR PHONE -->
+                        <Label Text="Instructor Phone:" TextColor="Navy"
+                               HorizontalOptions="End" VerticalOptions="Center"
+                               Grid.Row="2" Grid.Column="0"/>
+                        <Label x:Name="xInstPhone" TextColor="Black"
+                               HorizontalOptions="Start" VerticalOptions="Center"
+                               Grid.Row="2" Grid.Column="1"
+                               Text="123-456-7890"/>
+
+                        <!-- INSTRUCTOR EMAIL -->
+                        <Label Text="Instructor Email:" TextColor="Navy"
+                               HorizontalOptions="End" VerticalOptions="Center"
+                               Grid.Row="3" Grid.Column="0"/>
+                        <Label x:Name="xInstEmail" TextColor="Black"
+                               HorizontalOptions="Start" VerticalOptions="Center"
+                               Grid.Row="3" Grid.Column="1"
+                               Text="example@exampledomain.com"/>
+                    </Grid>
+                    
+                    <!-- GRID FOR NOTES AND SHARE BUTTON -->
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="12*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- NOTES -->
+                        <Editor Placeholder="Notes (optional)" Margin="5,0,2,0"
+                                BackgroundColor="LightGray" FontSize="Small"
+                                AutoSize="TextChanges" x:Name="xNotes"
+                                Grid.Row="0" Grid.Column="0"
+                                IsEnabled="False" TextColor="Black"/>
+                        <Image Source="share.png" HeightRequest="1"
+                               Grid.Row="0" Grid.Column="1"
+                               Margin="0,0,5,0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="xShare_Tapped" NumberOfTapsRequired="1"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                </StackLayout>
+                <BoxView Color="Navy" HeightRequest="2"/>
+
+                <!-- LISTVIEW TO DISPLAY ALL ASSESSMENTS -->
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <ListView x:Name="xAssessList" Margin="5,0,5,0"
+                              HeightRequest="1" HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Height="65">
+                                    <StackLayout>
+
+                                        <!-- ASSESSMENT NAME -->
+                                        <Label Text="{Binding Name}" TextColor="Black"
+                                           FontAttributes="Bold" FontSize= "Medium"
+                                           VerticalOptions="Center"/>
+                                        <StackLayout HorizontalOptions="Start" Orientation="Horizontal"
+                                                 Margin="20,0,0,0">
+
+                                            <!-- DUE DATE -->
+                                            <Label Text= "Due:" TextColor="Black"
+                                               FontAttributes="Bold" FontSize="Small"
+                                               VerticalOptions="Center"/>
+                                            <Label Text="{Binding DueDate,StringFormat='{}{0:MM/dd/yy}'}"
+                                               TextColor="Black" FontSize="Small"
+                                               VerticalOptions="Center"/>
+
+                                            <!-- ASSESSMENT TYPE -->
+                                            <Label Text="{Binding Type}" FontAttributes="Bold,Italic"
+                                                   TextColor="Navy" FontSize="Small"
+                                                   VerticalOptions="Center" Margin="20,0,0,0"/>
+
+                                            <!-- ASSESSMENT STATUS -->
+                                            <Label Text="{Binding Status}" FontAttributes="Bold,Italic"
+                                                   TextColor="Navy" FontSize="Small"
+                                                   VerticalOptions="Center" Margin="20,0,0,0"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <!-- ADD ASSESSMENT BUTTON -->
+                <Button Text="Add Assessment" x:Name="xBtnAdd"
+                        BackgroundColor="Navy" HeightRequest="50"
+                        TextColor="White" Clicked="xBtnAdd_Clicked"
+                        Grid.Row="0" Grid.Column="1"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+    

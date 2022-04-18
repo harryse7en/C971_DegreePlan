@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DegreePlan.AddAssess">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="0">
+
+                <!-- TITLE OF PAGE -->
+                <Label Text="Add Assessment" FontSize="Title"
+                       HorizontalOptions="Center" TextColor="Navy"/>
+                <Label Text="Example Name" FontSize="Subtitle"
+                       HorizontalOptions="Center" TextColor="Navy"
+                       FontAttributes="Italic" x:Name="xCourseName"/>
+                <BoxView Color="Navy" HeightRequest="2"/>
+
+                <!-- ASSESSMENT NAME -->
+                <Entry Placeholder="Assessment Name" Margin="5" x:Name="xName"
+                       TextChanged="xName_Changed"/>
+
+                <!-- GRID FOR ALL CONTENT WITH TWO COLUMNS -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- GRID FOR ASSESSMENT TYPE -->
+                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Type:" TextColor="Navy"
+                               HorizontalOptions="End" VerticalOptions="Center"
+                               Grid.Row="0" Grid.Column="0"/>
+                        <Picker x:Name="xType" Title=" "
+                                Grid.Row="0" Grid.Column="1"
+                                SelectedItem="0">
+                            <Picker.Items>
+                                <x:String>Objective (OA)</x:String>
+                                <x:String>Performance (PA)</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Grid>
+                    
+                    <!-- GRID FOR ASSESSMENT STATUS -->
+                    <Grid Grid.Row="1" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Status:" TextColor="Navy"
+                               HorizontalOptions="End" VerticalOptions="Center"
+                               Grid.Row="0" Grid.Column="0"/>
+                        <Picker x:Name="xStatus" Title=" "
+                                Grid.Row="0" Grid.Column="1"
+                                SelectedItem="0">
+                            <Picker.Items>
+                                <x:String>Unsubmitted</x:String>
+                                <x:String>In Queue</x:String>
+                                <x:String>Passed</x:String>
+                                <x:String>Returned</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Grid>
+
+                    <!-- GRID FOR DATE SELECTIONS -->
+                    <Grid Grid.Row="2" ColumnSpacing="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- ASSESSMENT DUE DATE -->
+                        <Label Text="Due Date:" TextColor="Navy"
+		    				   HorizontalOptions="End" VerticalOptions="Center"
+                               Grid.Row="0" Grid.Column="0"/>
+                        <DatePicker Format="D" x:Name="xDueDate"
+                                    Grid.Row="0" Grid.Column="1"/>
+                    </Grid>
+
+                    <!-- GRID FOR NOTIFICATION ENABLE -->
+                    <Grid Grid.Row="3" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Notifications:" TextColor="Navy"
+                               HorizontalOptions="Start" VerticalOptions="Center"
+                               Grid.Row="0" Grid.Column="0"/>
+                        <Switch x:Name="xNotify"
+                                Grid.Row="0" Grid.Column="1"/>
+                    </Grid>
+                </Grid>
+
+                <!-- ADD ASSESSMENT BUTTON -->
+                <Button Text="Add Assessment" x:Name="xBtnAdd"
+                        BackgroundColor="Navy" HeightRequest="50"
+                        TextColor="White" Clicked="xBtnAdd_Clicked"
+                        Grid.Row="0" Grid.Column="1"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

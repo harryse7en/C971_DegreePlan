@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DegreePlan.MainPage">
+    
+    <!-- LEGAL INFO TOOLBAR BUTTON -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="References" Clicked="xBtnRef_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout VerticalOptions="FillAndExpand">
+
+                    <!-- WGU LOGO -->
+                    <Frame OutlineColor="Black" Padding="2"
+                           HorizontalOptions="Center">
+                        <Image Source="logo.jpeg" HeightRequest="75"/>
+                    </Frame>
+
+                    <!-- TITLE OF PAGE -->
+                    <Label Text="My Degree Plan" TextColor="Navy"
+                           FontAttributes="Bold" FontSize="Title"
+                           Margin="0" HorizontalOptions="Center"/>
+                    <BoxView Color="Navy" HeightRequest="2"/>
+
+                    <!-- LISTVIEW TO DISPLAY ALL TERMS -->
+                    <ListView x:Name="xTermList" Margin="5,0,5,0"
+                              HeightRequest="1" HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Height="65">
+                                    <StackLayout>
+
+                                        <!-- TERM TITLE -->
+                                        <Label Text="{Binding Title}" TextColor="Black"
+                                                   FontAttributes="Bold" FontSize= "Medium"
+                                                   VerticalOptions="Center"/>
+                                        <StackLayout HorizontalOptions="Start" Orientation="Horizontal"
+                                                     Margin="20,0,0,0">
+    
+                                            <!-- START DATE -->
+                                            <Label Text= "Start:" TextColor="Black"
+                                                   FontAttributes="Bold" FontSize="Small"
+                                                   VerticalOptions="Center"/>
+                                            <Label Text="{Binding StartDate,StringFormat='{}{0:MM/dd/yy}'}"
+                                                   TextColor="Black" FontSize="Small"
+                                                   VerticalOptions="Center"/>
+
+                                            <!-- END DATE -->
+                                            <Label Text= "End:" TextColor="Black"
+                                                   FontAttributes="Bold" FontSize="Small"
+                                                   VerticalOptions="Center"/>
+                                            <Label Text="{Binding EndDate,StringFormat='{}{0:MM/dd/yy}'}"
+                                                   TextColor="Black" FontSize="Small"
+                                                   VerticalOptions="Center"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                
+                <!-- CREATE TERM BUTTON -->
+                <Button Text="Create New Term" x:Name="xBtnCreate"
+                        BackgroundColor="Navy" HeightRequest="50"
+                        TextColor="White" Clicked="xBtnNewTerm_Clicked"
+                        Grid.Row="0" Grid.Column="1"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

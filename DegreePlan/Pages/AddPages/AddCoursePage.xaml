@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DegreePlan.AddCourse">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="0">
+                
+                <!-- TITLE OF PAGE -->
+                <Label Text="Add Course" FontSize="Title"
+                       HorizontalOptions="Center" TextColor="Navy"/>
+                <Label Text="Example Name" FontSize="Subtitle"
+                       HorizontalOptions="Center" TextColor="Navy"
+                       FontAttributes="Italic" x:Name="xTermName"/>
+                <BoxView Color="Navy" HeightRequest="2"/>
+
+                <!-- COURSE NAME -->
+                <Entry Placeholder="Course Name" Margin="5" x:Name="xName"
+                       TextChanged="xName_Changed"/>
+                
+                <!-- GRID FOR ALL CONTENT WITH TWO COLUMNS -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- GRID FOR COURSE STATUS -->
+                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Status:" TextColor="Navy"
+                               HorizontalOptions="End" VerticalOptions="Center"
+                               Grid.Row="0" Grid.Column="0"/>
+                        <Picker x:Name="xStatus" Title=" "
+                                Grid.Row="0" Grid.Column="1"
+                                SelectedItem="0">
+                            <Picker.Items>
+                                <x:String>Registered</x:String>
+                                <x:String>Enrolled</x:String>
+                                <x:String>In Progress</x:String>
+                                <x:String>Completed</x:String>
+                                <x:String>Withdrawn</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Grid>
+
+                    <!-- GRID FOR DATE SELECTIONS -->
+                    <Grid Grid.Row="1" ColumnSpacing="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- COURSE START DATE -->
+                        <Label Text="Start Date:" TextColor="Navy"
+		    				   HorizontalOptions="End" VerticalOptions="Center"
+                               Grid.Row="0" Grid.Column="0"/>
+                        <DatePicker Format="D" x:Name="xStartDate"
+                                    DateSelected="xStartDate_DateSelected"
+                                    Grid.Row="0" Grid.Column="1"/>
+
+                        <!-- COURSE END DATE -->
+                        <Label Text="End Date:" TextColor="Navy"
+		    				   HorizontalOptions="End" VerticalOptions="Center"
+                               Grid.Row="1" Grid.Column="0"/>
+                        <DatePicker Format="D" x:Name="xEndDate"
+                                    Grid.Row="1" Grid.Column="1"/>
+                    </Grid>
+
+                    <!-- GRID FOR INSTRUCTOR INFO -->
+                    <Grid Grid.Row="2" ColumnSpacing="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- INSTRUCTOR NAME -->
+                        <Label Text="Instructor Info:" TextColor="Navy"
+                               HorizontalOptions="End" VerticalOptions="Center"
+                               Grid.Row="0" Grid.Column="0"/>
+                        <Entry Placeholder="Name" x:Name="xInstName"
+                               Grid.Row="0" Grid.Column="1"
+                               TextChanged="xInstName_Changed"/>
+                        
+                        <!-- INSTRUCTOR PHONE -->
+                        <Entry Placeholder="Phone" x:Name="xInstPhone"
+                               Grid.Row="1" Grid.Column="1"
+                               TextChanged="xInstPhone_Changed" Keyboard="Telephone"/>
+
+                        <!-- INSTRUCTOR EMAIL -->
+                        <Entry Placeholder="Email" x:Name="xInstEmail"
+                               Grid.Row="2" Grid.Column="1"
+                               TextChanged="xInstEmail_Changed" Keyboard="Email"/>
+                    </Grid>
+
+                    <!-- GRID FOR NOTIFICATION ENABLE -->
+                    <Grid Grid.Row="3" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Notifications:" TextColor="Navy"
+                               HorizontalOptions="Start" VerticalOptions="Center"
+                               Grid.Row="0" Grid.Column="0"/>
+                        <Switch x:Name="xNotify"
+                                Grid.Row="0" Grid.Column="1"/>
+                    </Grid>
+                </Grid>
+
+                <!-- NOTES -->
+                <Editor Placeholder="Notes (optional)" Margin="5"
+                        BackgroundColor="LightGray" FontSize="Small"
+                        AutoSize="TextChanges" IsSpellCheckEnabled="True"
+                        x:Name="xNotes"/>
+
+                <!-- ADD COURSE BUTTON -->
+                <Button Text="Add Course" x:Name="xBtnAdd"
+                        BackgroundColor="Navy" HeightRequest="50"
+                        TextColor="White" Clicked="xBtnAdd_Clicked"
+                        Grid.Row="0" Grid.Column="1"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+    

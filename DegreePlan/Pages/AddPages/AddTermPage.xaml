@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DegreePlan.AddTerm">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="0">
+                
+                <!-- TITLE OF PAGE -->
+                <Label Text="Create New Term" FontSize="Title"
+                       HorizontalOptions="Center" TextColor="Navy"/>
+                <BoxView Color="Navy" HeightRequest="2"/>
+                <Entry Placeholder="Term Name" Margin="5" x:Name="xName"
+                       TextChanged="xName_Changed"/>
+
+                <!-- GRID FOR DATE SELECTIONS -->
+                <Grid ColumnSpacing="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                
+                    <!-- TERM START DATE -->
+                    <Label Text="Start Date:" TextColor="Navy"
+						   HorizontalOptions="End" VerticalOptions="Center"
+                           Grid.Row="0" Grid.Column="0"/>
+                    <DatePicker Format="D" x:Name="xStartDate"
+                                DateSelected="xStartDate_DateSelected"
+                                Grid.Row="0" Grid.Column="1"/>
+
+                    <!-- TERM END DATE -->
+                    <Label Text="End Date:" TextColor="Navy"
+						   HorizontalOptions="End" VerticalOptions="Center"
+                           Grid.Row="1" Grid.Column="0"/>
+                    <DatePicker Format="D" x:Name="xEndDate"
+                                Grid.Row="1" Grid.Column="1"/>
+                </Grid>
+                
+                <!-- CREATE BUTTON -->
+                <Button Text="Create Term" x:Name="xBtnCreate"
+                        BackgroundColor="Navy" HeightRequest="50"
+                        TextColor="White" Clicked="xBtnCreate_Clicked"
+                        Grid.Row="0" Grid.Column="1"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+    
